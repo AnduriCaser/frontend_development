@@ -1,18 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Page</title>
-  </head>
-  <body>
-    <h1>Dashboard</h1>
 
-    <script>
-      document.addEventListener("DOMContentLoad", function () {
-          // Code here !!
-      });
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard</title>
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- box icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- style -->
+  <link rel="stylesheet" href="../styles/dashboard.css">
+</head>
 
-    </script>
-  </body>
+<body>
+  <!-- Start Sidebar -->
+  <aside class="sidebar">
+    <a href="#\" class="logo">
+      <i class="bx bx-ghost"></i>
+      <div class="logo-name">Syndore</div>
+    </a>
+    <ul class="side-menu">
+      <li class="active">
+        <a href="#\"><i class="bx bx-home-alt"></i>Homepage</a>
+      </li>
+      <li>
+        <a href="#\"><i class="bx bx-user"></i>Profile</a>
+      </li>
+      <li>
+        <a href="#\"><i class="bx bx-calendar"></i>Calendar</a>
+      </li>
+      <li>
+        <a href="#\"><i class="bx bx-edit-alt"></i>Notes</a>
+      </li>
+      <li>
+        <a href="#\"><i class="bx bx-cog"></i>Settings</a>
+      </li>
+    </ul>
+    <ul class="side-menu">
+      <li>
+        <a href="#\" class="logout">
+          <i class="bx bx-log-out"></i>Log out </a>
+      </li>
+    </ul>
+  </aside>
+  <!-- End Sidebar -->
+
+  <!-- Start Main Content -->
+  <main class="content">
+    <!-- Start Navbar -->
+    <nav>
+      <i class="bx bx-menu"></i>
+      <form>
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button class="search-btn" type="submit">
+            <i class="bx bx-search"></i>
+          </button>
+        </div>
+      </form>
+      <input type="checkbox" id="theme-toggle" hidden>
+      <label for="theme-toggle" class="theme-toggle"></label>
+      <a href="#\" class="notification">
+        <i class="bx bx-bell"></i>
+        <span class="count">14</span>
+      </a>
+      <a href="#\" class="profile">
+        <img src="https://picsum.photos/id/1/200/300" alt="profile">
+        <span>John Doe</span>
+      </a>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Start Section -->
+    <section>
+      <div class="data-container">
+        <!-- bottom-data -->
+        <div class="data">
+          <!-- orders -->
+          <div class="users">
+            <div class="header">
+              <i class="bx bxs-user-account"></i>
+              <h3>Users</h3>
+              <i class="bx bx-filter"></i>
+              <i class="bx bx-search-alt"></i>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <p>User 1</p>
+                  </td>
+                  <td>02-11-2023</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>User 2</p>
+                  </td>
+                  <td>03-11-2023</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>User 3</p>
+                  </td>
+                  <td>04-11-2023</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>User 4</p>
+                  </td>
+                  <td>05-11-2023</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>User 5</p>
+                  </td>
+                  <td>06-11-2023</td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>User 6</p>
+                  </td>
+                  <td>07-11-2023</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="pagination">
+              <a href="#\"><i class="bx bx-chevrons-left"></i></a>
+              <a href="#\">1</a>
+              <a class="active" href="#\">2</a>
+              <a href="#\">3</a>
+              <a href="#\">4</a>
+              <a href="#\">5</a>
+              <a href="#\"><i class="bx bx-chevrons-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts">
+          <h3>Pie Charts</h3>
+          <canvas id="pie"></canvas>
+        </div>
+      </div>
+    </section>
+    <!-- End Section -->
+  </main>
+  <!-- End Main Content -->
+
+  <!-- chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Start chart.js
+    var ctx = document.getElementById("pie").getContext("2d");
+    var myChart2 = new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: ["User 1", "User 2", "User 3", "Others"],
+
+        datasets: [
+          {
+            label: "Charts",
+            data: [42, 12, 8, 6],
+            backgroundColor: [
+              "rgba(41, 155, 99, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(120, 46, 139,1)",
+            ],
+            borderColor: [
+              "rgba(41, 155, 99, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(120, 46, 139,1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+      },
+    });
+    // End chart.js
+    let sideLink = document.querySelectorAll(".sidebar .side-menu li a:not(.logout)");
+    let menuBar = document.querySelector(".content nav .bx.bx-menu");
+    let sideBar = document.querySelector(".sidebar");
+    let searchBtn = document.querySelector(".content nav form .form-input button");
+    let searchBtnIcon = document.querySelector(".content nav form .form-input button .bx");
+    let searchForm = document.querySelector(".content nav form");
+    let toggler = document.getElementById("theme-toggle");
+
+    sideLink.forEach(item => {
+      let li = item.parentElement;
+      item.addEventListener("click", () => {
+        sideLink.forEach(i => {
+          i.parentElement.classList.remove("active");
+        })
+        li.classList.add("active");
+      })
+    });
+
+    menuBar.addEventListener("click", () => {
+      sideBar.classList.toggle("close");
+    });
+
+    searchBtn.addEventListener("click", function (e) {
+      if (window.innerWidth < 576) {
+        e.preventDefault();
+        searchForm.classList.toggle("show");
+        if (searchForm.classList.contains("show")) {
+          searchBtnIcon.classList.replace("bx-search", "bx-x");
+        } else {
+          searchBtnIcon.classList.replace("bx-x", "bx-search");
+        }
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 880) {
+        sideBar.classList.add("close");
+      } else {
+        sideBar.classList.remove("close");
+      }
+
+      if (window.innerWidth > 576) {
+        searchBtnIcon.classList.replace("bx-x", "bx-search");
+        searchForm.classList.remove("show");
+      }
+    });
+
+  </script>
+</body>
+
 </html>
