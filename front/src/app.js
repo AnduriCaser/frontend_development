@@ -1,12 +1,16 @@
 const express = require("express");
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const helmet = require('helmet');
-const fs = require('fs');
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const helmet = require("helmet");
+const fs = require("fs");
 const app = express();
 
 const frontRouter = require("./routes/index");
+
+const publicPathURL = path.join(__dirname, '/public');
+
+app.use(express.static(publicPathURL));
 
 app.use(helmet());
 app.use(logger("common"));
