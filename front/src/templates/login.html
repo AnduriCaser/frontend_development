@@ -1,15 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
-  </head>
-  <body>
-    <h1>Login</h1>
 
-    <script>
-      // Code here !!
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- box icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- style -->
+  <link rel="stylesheet" href="../styles/login.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="login">
+        <form class="login-form" id="form">
+          <i class="bx bx-ghost title"></i>
+          <div class="input-field">
+            <i class="bx bx-user"></i>
+            <input type="text" placeholder="Username" id="username">
+          </div>
+          <div class="errorMessage"></div>
+          <div class="input-field">
+            <i class="bx bx-lock-alt"></i>
+            <input type="password" placeholder="Password" id="password">
+          </div>
+          <div class="errorMessage"></div>
+          <input type="submit" value="Login" class="btn solid" id="submit">
+
+          <p class="social-text">or login with social platforms</p>
+          <div class="social-media">
+            <a href="#\" class="social-icon">
+              <i class="bx bxl-google"></i>
+            </a>
+            <a href="#\" class="social-icon">
+              <i class="bx bxl-linkedin"></i>
+            </a>
+          </div>
+
+          <div class="reg">
+            <p>Don&apos;t have an account yet?</p>
+            <a href="../templates/register.html">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let form = document.getElementById("form");
+    let username = document.getElementById("username");
+    let password = document.getElementById("password");
+    let errorMessage = document.getElementsByClassName("errorMessage");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      validate(username, 0, "Username cannot be empty!");
+      validate(password, 1, "Password cannot be empty!");
+    });
+
+    let validate = (id, item, message) => {
+      if (id.value.trim() === "") {
+        errorMessage[item].innerHTML = message;
+      } else {
+        errorMessage[item].innerHTML = "";
+      }
+    };
+
+  </script>
+</body>
+
 </html>
