@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register Page</title>
-  </head>
-  <body>
-    <h1>Register</h1>
 
-    <script>
-      // Code here !!
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Page</title>
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- box icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- style -->
+  <link rel="stylesheet" href="../styles/register.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="register">
+        <form class="register-form" id="form">
+          <i class="bx bx-ghost title"></i>
+          <div class="input-field">
+            <i class='bx bx-envelope'></i>
+            <input type="email" placeholder="Your email" id="email">
+          </div>
+          <div class="errorMessage"></div>
+          <div class="input-field">
+            <i class="bx bx-user"></i>
+            <input type="text" placeholder="Username" id="username">
+          </div>
+          <div class="errorMessage"></div>
+          <div class="input-field">
+            <i class="bx bx-lock-alt"></i>
+            <input type="password" placeholder="Password" id="password">
+          </div>
+          <div class="errorMessage"></div>
+          <input type="submit" value="Login" class="btn solid" id="submit">
+
+          <p class="social-text">or login with social platforms</p>
+          <div class="social-media">
+            <a href="#\" class="social-icon">
+              <i class="bx bxl-google"></i>
+            </a>
+            <a href="#\" class="social-icon">
+              <i class="bx bxl-linkedin"></i>
+            </a>
+          </div>
+
+          <div class="login">
+            <p>Already have an account?</p>
+            <a href="../templates/login.html">Login here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let form = document.getElementById("form");
+    let email = document.getElementById("email");
+    let username = document.getElementById("username");
+    let password = document.getElementById("password");
+    let errorMessage = document.getElementsByClassName("errorMessage");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      validate(email, 0, "Email cannot be empty!");
+      validate(username, 1, "Username cannot be empty!");
+      validate(password, 2, "Password cannot be empty!");
+    });
+
+    let validate = (id, item, message) => {
+      if (id.value.trim() === "") {
+        errorMessage[item].innerHTML = message;
+      } else {
+        errorMessage[item].innerHTML = "";
+      }
+    };
+  </script>
+</body>
+
 </html>
